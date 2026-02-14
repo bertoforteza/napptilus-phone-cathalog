@@ -5,14 +5,17 @@ import { ThemeProvider } from 'styled-components';
 import mainTheme from './styles/mainTheme.ts';
 import { GlobalStyles } from './styles/GlobalStyles.ts';
 import { BrowserRouter } from 'react-router-dom';
+import { PhonesProvider } from './context/phonesContext.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <ThemeProvider theme={mainTheme}>
-        <GlobalStyles />
-        <App />
-      </ThemeProvider>
+      <PhonesProvider>
+        <ThemeProvider theme={mainTheme}>
+          <GlobalStyles />
+          <App />
+        </ThemeProvider>
+      </PhonesProvider>
     </BrowserRouter>
   </StrictMode>
 );
