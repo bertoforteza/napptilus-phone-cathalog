@@ -1,6 +1,5 @@
-import { createContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useMemo, useState, type ReactNode } from 'react';
 import type { Phone } from '../types/phonesTypes';
-import usePhones from '../hooks/usePhones';
 
 interface PhonesContextType {
   phones: Phone[];
@@ -12,13 +11,12 @@ const PhonesContext = createContext<PhonesContextType>({ phones: [], setPhones: 
 export const PhonesProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<Phone[]>([]);
 
-  const { loadPhones } = usePhones();
+  const contextValue: PhonesContextType = useMemo(
+    () => ({ phones, setPhones }),
+    [phones, setPhones]
+  );
 
-  useEffect(() => {
-    loadPhones({ limit: 20 });
-  }, [loadPhones]);
-
-  return <PhonesContext.Provider value={{ phones, setPhones }}>{children}</PhonesContext.Provider>;
+  return <PhonesContext.Provider value={contextValue}>{children}</PhonesContext.Provider>;
 };
 
 export default PhonesContext;
