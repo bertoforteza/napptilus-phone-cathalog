@@ -14,6 +14,7 @@ declare module 'styled-components' {
         negative: string;
         primaryHover: string;
         secondaryHover: string;
+        placeholder: string;
       };
     };
     spacing: {

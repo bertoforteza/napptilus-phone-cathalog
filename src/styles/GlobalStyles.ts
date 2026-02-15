@@ -24,6 +24,8 @@ export const GlobalStyles = createGlobalStyle`
     color: inherit;
   }
 
+  input {all: unset;}
+
   input, select {
     font-family: Helvetica, Arial, sans-serif;
   }
