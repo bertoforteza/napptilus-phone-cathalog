@@ -12,6 +12,8 @@ declare module 'styled-components' {
         secondary: string;
         disabled: string;
         negative: string;
+        primaryHover: string;
+        secondaryHover: string;
       };
     };
     spacing: {
@@ -29,6 +31,7 @@ declare module 'styled-components' {
     };
     typography: {
       fontSize: {
+        xxs: string;
         xs: string;
         s: string;
         m: string;

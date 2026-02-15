@@ -7,10 +7,12 @@ const mainTheme: DefaultTheme = {
     disabled: '#ccc',
     border: '#000',
     text: {
-      primary: '#000000',
-      secondary: '#aaa',
+      primary: '#000',
+      secondary: '#79736d',
       disabled: '#999',
       negative: '#df0000',
+      primaryHover: '#fff',
+      secondaryHover: '#ccc',
     },
   },
   spacing: {
@@ -28,6 +30,7 @@ const mainTheme: DefaultTheme = {
   },
   typography: {
     fontSize: {
+      xxs: '0.625rem',
       xs: '0.75rem',
       s: '0.875rem',
       m: '1rem',
