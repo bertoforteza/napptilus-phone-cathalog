@@ -1,8 +1,12 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import PhoneListPageStyled from './PhoneListPageStyled';
+import PhonesContext from '../../context/phonesContext';
+import PhoneCard from '../../components/PhoneCard/PhoneCard';
 import usePhones from '../../hooks/usePhones';
 
 const PhoneListPage = () => {
+  const { phones } = useContext(PhonesContext);
+
   const { loadPhones } = usePhones();
 
   useEffect(() => {
@@ -11,7 +15,11 @@ const PhoneListPage = () => {
 
   return (
     <PhoneListPageStyled>
-      <h1>Phone List Page</h1>
+      <ul className="phone-list__results">
+        {phones.map(phone => (
+          <PhoneCard phone={phone} key={phone.id} />
+        ))}
+      </ul>
     </PhoneListPageStyled>
   );
 };
