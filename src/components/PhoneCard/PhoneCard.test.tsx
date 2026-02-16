@@ -1,7 +1,6 @@
 import phoneMock from '../../mocks/phoneMock';
-import { render } from '../../test/test-utils';
+import { render, screen } from '../../test/test-utils';
 import PhoneCard from './PhoneCard';
-import { screen } from '@testing-library/react';
 
 describe('Given a PhoneCard component', () => {
   describe('When it receives a phone object as prop', () => {

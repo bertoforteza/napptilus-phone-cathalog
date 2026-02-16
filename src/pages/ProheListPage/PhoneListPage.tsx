@@ -22,9 +22,13 @@ const PhoneListPage = () => {
       <div className="phone-list__searchbar">
         <SearchBar
           searchText={requestParams.search ?? ''}
-          onSearchTextChange={value =>
-            setRequestParams(previousParams => ({ ...previousParams, search: value }))
-          }
+          onSearchTextChange={value => {
+            if (value !== '') {
+              setRequestParams(previousParams => ({ ...previousParams, search: value }));
+            } else {
+              setRequestParams(previousParams => ({ ...previousParams, search: undefined }));
+            }
+          }}
         />
 
         <span className="phone-list__count" aria-label={`Number of results: ${phones.length}`}>
@@ -34,8 +38,8 @@ const PhoneListPage = () => {
 
       {phones.length > 0 && (
         <ul className="phone-list__results">
-          {phones.map(phone => (
-            <PhoneCard phone={phone} key={phone.id} />
+          {phones.map((phone, index) => (
+            <PhoneCard phone={phone} key={`${phone.id}-${index}`} />
           ))}
         </ul>
       )}
