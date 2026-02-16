@@ -13,6 +13,7 @@ const mainTheme: DefaultTheme = {
       negative: '#df0000',
       primaryHover: '#fff',
       secondaryHover: '#ccc',
+      placeholder: '#aaa',
     },
   },
   spacing: {

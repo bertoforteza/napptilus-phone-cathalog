@@ -5,9 +5,8 @@ const PhoneCardStyled = styled.li`
   display: flex;
   flex-direction: column;
   gap: ${props => props.theme.spacing.l};
-  border: 0.5px solid ${props => props.theme.colors.border};
   height: 21.5rem;
-  width: 21.5rem;
+  width: 100%;
   padding: ${props => props.theme.spacing.m};
   overflow: hidden;
   cursor: pointer;
@@ -86,12 +85,10 @@ const PhoneCardStyled = styled.li`
 
   @media (min-width: 834px) and (max-width: 1023px) {
     height: 23.563rem;
-    width: 23.563rem;
   }
 
   @media (max-width: 833px) {
     height: 21.5rem;
-    width: 22.563rem;
   }
 `;
 

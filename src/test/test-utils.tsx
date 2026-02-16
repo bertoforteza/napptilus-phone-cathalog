@@ -4,6 +4,7 @@ import { PhonesProvider } from '../context/phonesContext';
 import { ThemeProvider } from 'styled-components';
 import mainTheme from '../styles/mainTheme';
 import { GlobalStyles } from '../styles/GlobalStyles';
+import userEvent from '@testing-library/user-event';
 
 /* eslint-disable react-refresh/only-export-components */
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
@@ -23,3 +24,4 @@ const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>
 /* eslint-disable react-refresh/only-export-components */
 export * from '@testing-library/react';
 export { customRender as render };
+export { userEvent };

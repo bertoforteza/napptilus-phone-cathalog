@@ -11,7 +11,6 @@ const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
   return (
     <PhoneCardStyled
       className="phone-card"
-      as="article"
       tabIndex={0}
       role={'button'}
       aria-label={`Phone ${brand} model ${name}, price ${basePrice} euros`}
