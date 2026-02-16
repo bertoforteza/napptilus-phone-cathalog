@@ -7,6 +7,19 @@ const PhoneListPageStyled = styled.main`
   padding: 3rem 6.25rem;
 
   .phone-list {
+    &__searchbar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    &__count {
+      color: ${props => props.theme.colors.text.primary};
+      font-size: ${props => props.theme.typography.fontSize.xs};
+      font-weight: ${props => props.theme.typography.fontWeight.light};
+      text-transform: uppercase;
+    }
+
     &__results {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(21.5rem, 1fr));
