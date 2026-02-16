@@ -1,7 +1,12 @@
 import '@testing-library/jest-dom';
-import { cleanup } from '@testing-library/react';
-import { afterEach } from 'vitest';
+import { beforeAll, afterEach, afterAll } from 'vitest';
+import { server } from '../mocks/server';
 
-afterEach(() => {
-  cleanup();
+beforeAll(() => {
+  server.listen();
+  server.events.on('request:start', ({ request }) => {
+    console.log(`MSW intercepted: ${request.method} ${request.url}`);
+  });
 });
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
