@@ -9,7 +9,7 @@ const mainTheme: DefaultTheme = {
     text: {
       primary: '#000',
       secondary: '#79736d',
-      disabled: '#999',
+      disabled: '#c2bfbc',
       negative: '#df0000',
       primaryHover: '#fff',
       secondaryHover: '#ccc',
@@ -45,6 +45,20 @@ const mainTheme: DefaultTheme = {
       medium: 500,
       bold: 700,
     },
+  },
+  button: {
+    backgroundPrimary: '#000',
+    backgroundHover: '#282624',
+    backgroundActive: '#363331',
+    backgroundDisabled: '#f3f2f2',
+    textPrimary: '#fff',
+    textDisabled: '#c2bfbc',
+    textOutlined: '#000',
+    textOutlinedHover: '#504D49',
+    borderOutlined: '#1B1A18',
+    borderOutlinedHover: '#1b1a18',
+    borderOutlinedActive: '#363331',
+    borderOutlinedDisabled: '#dbd9d7',
   },
 };
 
