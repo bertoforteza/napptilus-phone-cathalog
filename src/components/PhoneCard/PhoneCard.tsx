@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import type { Phone } from '../../types/phonesTypes';
 import PhoneCardStyled from './PhoneCardStyled';
 
@@ -6,6 +7,11 @@ interface PhoneCardProps {
 }
 
 const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/phone/${phone.id}`);
+  };
   const { basePrice, brand, imageUrl, name } = phone;
 
   return (
@@ -14,6 +20,7 @@ const PhoneCard: React.FC<PhoneCardProps> = ({ phone }) => {
       tabIndex={0}
       role={'button'}
       aria-label={`Phone ${brand} model ${name}, price ${basePrice} euros`}
+      onClick={handleCardClick}
     >
       <img
         src={imageUrl}
