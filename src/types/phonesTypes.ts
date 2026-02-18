@@ -12,14 +12,6 @@ export interface ColorOption {
   imageUrl: string;
 }
 
-export interface SimilarProduct {
-  id: string;
-  brand: string;
-  name: string;
-  basePrice: number;
-  imageUrl: string;
-}
-
 export interface Specs {
   screen: string;
   resolution: string;
@@ -46,5 +38,5 @@ export interface PhoneDetails {
   specs: Specs;
   colorOptions: ColorOption[];
   storageOptions: StorageOption[];
-  similarProducts: SimilarProduct[];
+  similarProducts: Phone[];
 }
