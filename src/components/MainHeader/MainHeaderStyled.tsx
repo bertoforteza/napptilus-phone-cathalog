@@ -6,6 +6,10 @@ const MainHeaderStyled = styled.header`
   align-items: center;
   padding: ${props => props.theme.spacing.xl} 6.25rem;
 
+  a {
+    height: ${props => props.theme.spacing.l};
+  }
+
   .main-header {
     &__logo {
       width: 4.625rem;
