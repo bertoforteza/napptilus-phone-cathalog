@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import type { PhoneDetails } from '../../types/phonesTypes';
 import PhoneDetailsPageStyled from './PhoneDetailsPageStyled';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import usePhones from '../../hooks/usePhones';
 import BackIcon from '../../assets/svg/back-icon.svg';
 import StorageSelector from '../../components/StorageSelector/StorageSelector';
@@ -9,6 +9,7 @@ import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import Button from '../../components/Button/Button';
 import SimilarProducts from '../../components/SimilarProducts/SimilarProducts';
 import Specifications from '../../components/Specifications/Specifications';
+import PhonesContext from '../../context/phonesContext';
 
 const PhoneDetailsPage = () => {
   const [phoneDetails, setPhoneDetails] = useState<PhoneDetails | null>(null);
@@ -18,6 +19,8 @@ const PhoneDetailsPage = () => {
 
   const { id } = useParams();
   const { loadPhoneDetails } = usePhones();
+  const { setPhonesChart } = useContext(PhonesContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
@@ -61,7 +64,14 @@ const PhoneDetailsPage = () => {
                   setSelectedColorOption={setSelectedColorOption}
                 />
 
-                <Button text="AÑADIR" onClick={() => {}} disabled={selectedPrice === null} />
+                <Button
+                  text="AÑADIR"
+                  onClick={() => {
+                    setPhonesChart(previousPhones => [...previousPhones, phoneDetails]);
+                    navigate('/chart');
+                  }}
+                  disabled={selectedPrice === null}
+                />
               </div>
             </section>
 
