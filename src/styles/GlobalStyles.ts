@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: ${props => props.theme.colors.primary};
@@ -27,6 +27,10 @@ export const GlobalStyles = createGlobalStyle`
   input {all: unset;}
 
   input, select {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+
+  li {
+    list-style: none;
   }
 `;

@@ -47,5 +47,19 @@ declare module 'styled-components' {
         bold: number;
       };
     };
+    button: {
+      backgroundPrimary: string;
+      backgroundHover: string;
+      backgroundActive: string;
+      backgroundDisabled: string;
+      textPrimary: string;
+      textDisabled: string;
+      textOutlined: string;
+      textOutlinedHover: string;
+      borderOutlined: string;
+      borderOutlinedHover: string;
+      borderOutlinedActive: string;
+      borderOutlinedDisabled: string;
+    };
   }
 }

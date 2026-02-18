@@ -1,7 +1,8 @@
 import { useCallback, useContext } from 'react';
 import PhonesContext from '../context/phonesContext';
-import { getPhones, type GetPhonesParams } from '../services/phonesServices';
+import { getPhoneDetails, getPhones, type GetPhonesParams } from '../services/phonesServices';
 import { AxiosError } from 'axios';
+import type { PhoneDetails } from '../types/phonesTypes';
 
 const usePhones = () => {
   const { setPhones } = useContext(PhonesContext);
@@ -20,7 +21,24 @@ const usePhones = () => {
     [setPhones]
   );
 
-  return { loadPhones };
+  const loadPhoneDetails = useCallback(
+    async (
+      id: string,
+      setPhoneDetails: React.Dispatch<React.SetStateAction<PhoneDetails | null>>
+    ) => {
+      try {
+        const response = await getPhoneDetails(id);
+        setPhoneDetails(response);
+      } catch (error) {
+        const errorMessage =
+          error instanceof AxiosError ? error.message : 'Error loading phone details';
+        console.error(errorMessage);
+      }
+    },
+    []
+  );
+
+  return { loadPhones, loadPhoneDetails };
 };
 
 export default usePhones;

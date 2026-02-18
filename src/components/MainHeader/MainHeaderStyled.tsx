@@ -4,7 +4,11 @@ const MainHeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${props => props.theme.spacing.xl} ${props => props.theme.spacing.m};
+  padding: ${props => props.theme.spacing.xl} 6.25rem;
+
+  a {
+    height: ${props => props.theme.spacing.l};
+  }
 
   .main-header {
     &__logo {
@@ -16,6 +20,10 @@ const MainHeaderStyled = styled.header`
       width: ${props => props.theme.spacing.l};
       height: ${props => props.theme.spacing.l};
     }
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    padding: ${props => props.theme.spacing.xl} ${props => props.theme.spacing.m};
   }
 `;
 

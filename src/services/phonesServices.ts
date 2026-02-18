@@ -1,5 +1,5 @@
 import { customAxiosRequest } from '../utils/api/customAxiosRequest';
-import type { Phone } from '../types/phonesTypes';
+import type { Phone, PhoneDetails } from '../types/phonesTypes';
 
 export interface GetPhonesParams {
   search?: string;
@@ -12,5 +12,12 @@ export const getPhones = (params?: GetPhonesParams): Promise<Phone[]> => {
     method: 'GET',
     url: '/products',
     params,
+  });
+};
+
+export const getPhoneDetails = (id: string): Promise<PhoneDetails> => {
+  return customAxiosRequest<PhoneDetails>({
+    method: 'GET',
+    url: `/products/${id}`,
   });
 };
