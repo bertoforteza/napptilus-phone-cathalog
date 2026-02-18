@@ -2,6 +2,12 @@ import phoneMock from '../../mocks/phoneMock';
 import { render, screen } from '../../test/test-utils';
 import PhoneCard from './PhoneCard';
 
+const mockUseNavigate = vi.fn();
+vi.mock('react-router-dom', () => ({
+  ...vi.importActual('react-router-dom'),
+  useNavigate: () => mockUseNavigate,
+}));
+
 describe('Given a PhoneCard component', () => {
   describe('When it receives a phone object as prop', () => {
     test("Then it should render the phone's brand, name, price and image", () => {
