@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import type { PhoneDetails } from '../../types/phonesTypes';
+import type { PhoneDetails, SelectedPhoneDetails } from '../../types/phonesTypes';
 import PhoneDetailsPageStyled from './PhoneDetailsPageStyled';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import usePhones from '../../hooks/usePhones';
@@ -15,7 +15,6 @@ const PhoneDetailsPage = () => {
   const [phoneDetails, setPhoneDetails] = useState<PhoneDetails | null>(null);
   const [selectedColorOption, setSelectedColorOption] = useState<number>(0);
   const [selectedPrice, setSelectedPrice] = useState<number | null>(null);
-  console.log(selectedPrice);
 
   const { id } = useParams();
   const { loadPhoneDetails } = usePhones();
@@ -67,7 +66,15 @@ const PhoneDetailsPage = () => {
                 <Button
                   text="AÑADIR"
                   onClick={() => {
-                    setPhonesCart(previousPhones => [...previousPhones, phoneDetails]);
+                    const selectedPhoneDetails: SelectedPhoneDetails = {
+                      ...phoneDetails,
+                      selectedColor: phoneDetails.colorOptions[selectedColorOption],
+                      selectedStorage:
+                        phoneDetails.storageOptions.find(
+                          option => option.price === selectedPrice
+                        ) || phoneDetails.storageOptions[0],
+                    };
+                    setPhonesCart(previousPhones => [...previousPhones, selectedPhoneDetails]);
                     navigate('/cart');
                   }}
                   disabled={selectedPrice === null}

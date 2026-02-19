@@ -1,11 +1,11 @@
 import { createContext, useMemo, useState, type ReactNode } from 'react';
-import type { Phone, PhoneDetails } from '../types/phonesTypes';
+import type { Phone, SelectedPhoneDetails } from '../types/phonesTypes';
 
 export interface PhonesContextType {
   phones: Phone[];
   setPhones: React.Dispatch<React.SetStateAction<Phone[]>>;
-  phonesCart: PhoneDetails[];
-  setPhonesCart: React.Dispatch<React.SetStateAction<PhoneDetails[]>>;
+  phonesCart: SelectedPhoneDetails[];
+  setPhonesCart: React.Dispatch<React.SetStateAction<SelectedPhoneDetails[]>>;
 }
 
 const PhonesContext = createContext<PhonesContextType>({
@@ -17,7 +17,7 @@ const PhonesContext = createContext<PhonesContextType>({
 
 export const PhonesProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<Phone[]>([]);
-  const [phonesCart, setPhonesCart] = useState<PhoneDetails[]>([]);
+  const [phonesCart, setPhonesCart] = useState<SelectedPhoneDetails[]>([]);
 
   const contextValue: PhonesContextType = useMemo(
     () => ({ phones, setPhones, phonesCart, setPhonesCart }),

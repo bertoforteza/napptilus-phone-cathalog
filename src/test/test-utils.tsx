@@ -5,12 +5,12 @@ import { ThemeProvider } from 'styled-components';
 import mainTheme from '../styles/mainTheme';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import userEvent from '@testing-library/user-event';
-import type { Phone, PhoneDetails } from '../types/phonesTypes';
+import type { Phone, SelectedPhoneDetails } from '../types/phonesTypes';
 
 interface TestPhonesProviderProps {
   children: React.ReactNode;
   phones?: Phone[];
-  phonesCart?: PhoneDetails[];
+  phonesCart?: SelectedPhoneDetails[];
 }
 
 /* eslint-disable react-refresh/only-export-components */
@@ -31,7 +31,7 @@ const MockPhonesProvider = ({
 
 interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   phones?: Phone[];
-  phonesCart?: PhoneDetails[];
+  phonesCart?: SelectedPhoneDetails[];
 }
 
 const renderWithMockPhonesProvider = (
