@@ -1,7 +1,7 @@
 import { createContext, useMemo, useState, type ReactNode } from 'react';
 import type { Phone, PhoneDetails } from '../types/phonesTypes';
 
-interface PhonesContextType {
+export interface PhonesContextType {
   phones: Phone[];
   setPhones: React.Dispatch<React.SetStateAction<Phone[]>>;
   phonesChart: PhoneDetails[];

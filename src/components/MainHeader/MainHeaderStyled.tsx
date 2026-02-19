@@ -15,11 +15,6 @@ const MainHeaderStyled = styled.header`
       width: 4.625rem;
       height: ${props => props.theme.spacing.l};
     }
-
-    &__chart {
-      width: ${props => props.theme.spacing.l};
-      height: ${props => props.theme.spacing.l};
-    }
   }
 
   @media (max-width: ${props => props.theme.breakpoints.mobile}) {
