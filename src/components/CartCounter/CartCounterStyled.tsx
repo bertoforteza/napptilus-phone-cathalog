@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ChartCounterStyled = styled.button`
+const CartCounterStyled = styled.button`
   display: flex;
   align-items: center;
   gap: 0.375rem;
@@ -8,7 +8,7 @@ const ChartCounterStyled = styled.button`
   border: none;
   cursor: pointer;
 
-  .chart-counter {
+  .cart-counter {
     &__icon {
       width: ${props => props.theme.spacing.l};
       height: ${props => props.theme.spacing.l};
@@ -22,4 +22,4 @@ const ChartCounterStyled = styled.button`
   }
 `;
 
-export default ChartCounterStyled;
+export default CartCounterStyled;

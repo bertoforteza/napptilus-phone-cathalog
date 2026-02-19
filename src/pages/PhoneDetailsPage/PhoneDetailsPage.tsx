@@ -19,7 +19,7 @@ const PhoneDetailsPage = () => {
 
   const { id } = useParams();
   const { loadPhoneDetails } = usePhones();
-  const { setPhonesChart } = useContext(PhonesContext);
+  const { setPhonesCart } = useContext(PhonesContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -67,8 +67,8 @@ const PhoneDetailsPage = () => {
                 <Button
                   text="AÑADIR"
                   onClick={() => {
-                    setPhonesChart(previousPhones => [...previousPhones, phoneDetails]);
-                    navigate('/chart');
+                    setPhonesCart(previousPhones => [...previousPhones, phoneDetails]);
+                    navigate('/cart');
                   }}
                   disabled={selectedPrice === null}
                 />

@@ -10,20 +10,20 @@ import type { Phone, PhoneDetails } from '../types/phonesTypes';
 interface TestPhonesProviderProps {
   children: React.ReactNode;
   phones?: Phone[];
-  phonesChart?: PhoneDetails[];
+  phonesCart?: PhoneDetails[];
 }
 
 /* eslint-disable react-refresh/only-export-components */
 const MockPhonesProvider = ({
   children,
   phones = [],
-  phonesChart = [],
+  phonesCart = [],
 }: TestPhonesProviderProps) => {
   const value: PhonesContextType = {
     phones,
     setPhones: vi.fn(),
-    phonesChart,
-    setPhonesChart: vi.fn(),
+    phonesCart,
+    setPhonesCart: vi.fn(),
   };
 
   return <PhonesContext.Provider value={value}>{children}</PhonesContext.Provider>;
@@ -31,15 +31,15 @@ const MockPhonesProvider = ({
 
 interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   phones?: Phone[];
-  phonesChart?: PhoneDetails[];
+  phonesCart?: PhoneDetails[];
 }
 
 const renderWithMockPhonesProvider = (
   ui: ReactElement,
-  { phones, phonesChart, ...options }: CustomRenderOptions = {}
+  { phones, phonesCart, ...options }: CustomRenderOptions = {}
 ) => {
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
-    <MockPhonesProvider phones={phones} phonesChart={phonesChart}>
+    <MockPhonesProvider phones={phones} phonesCart={phonesCart}>
       <ThemeProvider theme={mainTheme}>
         <GlobalStyles />
         {children}
