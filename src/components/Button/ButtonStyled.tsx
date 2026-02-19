@@ -24,10 +24,10 @@ const ButtonStyled = styled.button`
     color: ${props => props.theme.button.textDisabled};
   }
 
-  .outlined {
+  &.outlined {
     background-color: transparent;
     border: 0.5px solid ${props => props.theme.button.borderOutlined};
-    color: ·${props => props.theme.button.textOutlined};
+    color: ${props => props.theme.button.textOutlined};
 
     &:hover {
       border-color: ${props => props.theme.button.borderOutlinedHover};

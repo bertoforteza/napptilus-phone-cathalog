@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import type { PhoneDetails } from '../../types/phonesTypes';
+import { useContext, useEffect, useState } from 'react';
+import type { PhoneDetails, SelectedPhoneDetails } from '../../types/phonesTypes';
 import PhoneDetailsPageStyled from './PhoneDetailsPageStyled';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import usePhones from '../../hooks/usePhones';
 import BackIcon from '../../assets/svg/back-icon.svg';
 import StorageSelector from '../../components/StorageSelector/StorageSelector';
@@ -9,15 +9,17 @@ import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import Button from '../../components/Button/Button';
 import SimilarProducts from '../../components/SimilarProducts/SimilarProducts';
 import Specifications from '../../components/Specifications/Specifications';
+import PhonesContext from '../../context/phonesContext';
 
 const PhoneDetailsPage = () => {
   const [phoneDetails, setPhoneDetails] = useState<PhoneDetails | null>(null);
   const [selectedColorOption, setSelectedColorOption] = useState<number>(0);
   const [selectedPrice, setSelectedPrice] = useState<number | null>(null);
-  console.log(selectedPrice);
 
   const { id } = useParams();
   const { loadPhoneDetails } = usePhones();
+  const { setPhonesCart } = useContext(PhonesContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
@@ -61,7 +63,22 @@ const PhoneDetailsPage = () => {
                   setSelectedColorOption={setSelectedColorOption}
                 />
 
-                <Button text="AÑADIR" onClick={() => {}} disabled={selectedPrice === null} />
+                <Button
+                  text="AÑADIR"
+                  onClick={() => {
+                    const selectedPhoneDetails: SelectedPhoneDetails = {
+                      ...phoneDetails,
+                      selectedColor: phoneDetails.colorOptions[selectedColorOption],
+                      selectedStorage:
+                        phoneDetails.storageOptions.find(
+                          option => option.price === selectedPrice
+                        ) || phoneDetails.storageOptions[0],
+                    };
+                    setPhonesCart(previousPhones => [...previousPhones, selectedPhoneDetails]);
+                    navigate('/cart');
+                  }}
+                  disabled={selectedPrice === null}
+                />
               </div>
             </section>
 

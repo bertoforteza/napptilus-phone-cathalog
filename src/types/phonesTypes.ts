@@ -40,3 +40,8 @@ export interface PhoneDetails {
   storageOptions: StorageOption[];
   similarProducts: Phone[];
 }
+
+export interface SelectedPhoneDetails extends PhoneDetails {
+  selectedColor: ColorOption;
+  selectedStorage: StorageOption;
+}

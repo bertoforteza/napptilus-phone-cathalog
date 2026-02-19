@@ -1,10 +1,54 @@
 import React, { type ReactElement } from 'react';
 import { render, type RenderOptions } from '@testing-library/react';
-import { PhonesProvider } from '../context/phonesContext';
+import PhonesContext, { PhonesProvider, type PhonesContextType } from '../context/phonesContext';
 import { ThemeProvider } from 'styled-components';
 import mainTheme from '../styles/mainTheme';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import userEvent from '@testing-library/user-event';
+import type { Phone, SelectedPhoneDetails } from '../types/phonesTypes';
+
+interface TestPhonesProviderProps {
+  children: React.ReactNode;
+  phones?: Phone[];
+  phonesCart?: SelectedPhoneDetails[];
+}
+
+/* eslint-disable react-refresh/only-export-components */
+const MockPhonesProvider = ({
+  children,
+  phones = [],
+  phonesCart = [],
+}: TestPhonesProviderProps) => {
+  const value: PhonesContextType = {
+    phones,
+    setPhones: vi.fn(),
+    phonesCart,
+    setPhonesCart: vi.fn(),
+  };
+
+  return <PhonesContext.Provider value={value}>{children}</PhonesContext.Provider>;
+};
+
+interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
+  phones?: Phone[];
+  phonesCart?: SelectedPhoneDetails[];
+}
+
+const renderWithMockPhonesProvider = (
+  ui: ReactElement,
+  { phones, phonesCart, ...options }: CustomRenderOptions = {}
+) => {
+  const Wrapper = ({ children }: { children: React.ReactNode }) => (
+    <MockPhonesProvider phones={phones} phonesCart={phonesCart}>
+      <ThemeProvider theme={mainTheme}>
+        <GlobalStyles />
+        {children}
+      </ThemeProvider>
+    </MockPhonesProvider>
+  );
+
+  return render(ui, { wrapper: Wrapper, ...options });
+};
 
 /* eslint-disable react-refresh/only-export-components */
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
@@ -25,3 +69,4 @@ const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>
 export * from '@testing-library/react';
 export { customRender as render };
 export { userEvent };
+export { renderWithMockPhonesProvider };
