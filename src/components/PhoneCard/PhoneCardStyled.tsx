@@ -83,11 +83,11 @@ const PhoneCardStyled = styled.li`
     }
   }
 
-  @media (min-width: 834px) and (max-width: 1023px) {
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
     height: 23.563rem;
   }
 
-  @media (max-width: 833px) {
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     height: 21.5rem;
   }
 `;

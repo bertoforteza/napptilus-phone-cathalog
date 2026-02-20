@@ -22,7 +22,7 @@ const PhoneListPageStyled = styled.main`
 
     &__results {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(21.5rem, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 
       border-top: 0.5px solid ${props => props.theme.colors.border};
       border-left: 0.5px solid ${props => props.theme.colors.border};
@@ -32,6 +32,14 @@ const PhoneListPageStyled = styled.main`
         border-bottom: 0.5px solid ${props => props.theme.colors.border};
       }
     }
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    padding: 3rem 2.5rem;
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    padding: 1.5rem 1rem;
   }
 `;
 

@@ -43,6 +43,10 @@ const ButtonStyled = styled.button`
       color: ${props => props.theme.button.textDisabled};
     }
   }
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    width: 100%;
+  }
 `;
 
 export default ButtonStyled;
