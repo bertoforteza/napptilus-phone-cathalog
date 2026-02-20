@@ -5,11 +5,22 @@ interface ButtonsProps {
   onClick: () => void;
   variant?: 'primary' | 'outlined';
   disabled?: boolean;
+  className?: string;
 }
 
-const Button: React.FC<ButtonsProps> = ({ text, onClick, disabled, variant = 'primary' }) => {
+const Button: React.FC<ButtonsProps> = ({
+  text,
+  onClick,
+  disabled,
+  variant = 'primary',
+  className,
+}) => {
   return (
-    <ButtonStyled onClick={onClick} disabled={disabled} className={variant}>
+    <ButtonStyled
+      onClick={onClick}
+      disabled={disabled}
+      className={`${variant} ${className}`.trim()}
+    >
       {text}
     </ButtonStyled>
   );

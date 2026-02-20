@@ -47,15 +47,21 @@ const CartPage = () => {
       </ul>
 
       <div className="cart-page__actions">
-        <Button variant="outlined" text="continue shopping" onClick={() => navigate('/')} />
+        <Button
+          variant="outlined"
+          text="continue shopping"
+          onClick={() => navigate('/')}
+          className="cart-page__continue-button"
+        />
+
         {totalPrice > 0 && !isEmpty && (
-          <div className="cart-page__actions-group">
+          <>
             <div className="cart-page__total">
               <span className="cart-page__total-value">Total</span>
               <span className="cart-page__total-value">{`${totalPrice} EUR`}</span>
             </div>
-            <Button text="pay" onClick={() => {}} />
-          </div>
+            <Button text="pay" onClick={() => {}} className="cart-page__pay-button" />
+          </>
         )}
       </div>
     </CartPageStyled>
