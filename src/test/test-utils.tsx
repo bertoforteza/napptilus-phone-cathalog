@@ -11,6 +11,7 @@ interface TestPhonesProviderProps {
   children: React.ReactNode;
   phones?: Phone[];
   phonesCart?: SelectedPhoneDetails[];
+  isLoading?: boolean;
 }
 
 /* eslint-disable react-refresh/only-export-components */
@@ -18,12 +19,15 @@ const MockPhonesProvider = ({
   children,
   phones = [],
   phonesCart = [],
+  isLoading = false,
 }: TestPhonesProviderProps) => {
   const value: PhonesContextType = {
     phones,
     setPhones: vi.fn(),
     phonesCart,
     setPhonesCart: vi.fn(),
+    isLoading,
+    setIsLoading: vi.fn(),
   };
 
   return <PhonesContext.Provider value={value}>{children}</PhonesContext.Provider>;

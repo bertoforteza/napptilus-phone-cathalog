@@ -1,6 +1,12 @@
 import { render, screen, userEvent, waitFor } from '../../test/test-utils';
 import PhoneListPage from './PhoneListPage';
 
+const mockUseNavigate = vi.fn();
+vi.mock('react-router-dom', () => ({
+  ...vi.importActual('react-router-dom'),
+  useNavigate: () => mockUseNavigate,
+}));
+
 describe('Given a PhoneListPage component', () => {
   describe("When it's rendered", () => {
     test('Then it should render a SearchBar component, a text with the number of results and a list of phone cards', async () => {
