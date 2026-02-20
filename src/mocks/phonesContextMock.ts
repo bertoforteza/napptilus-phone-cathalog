@@ -5,6 +5,8 @@ const phonesContextMock: PhonesContextType = {
   setPhones: () => {},
   phonesCart: [],
   setPhonesCart: () => {},
+  isLoading: false,
+  setIsLoading: () => {},
 };
 
 export default phonesContextMock;

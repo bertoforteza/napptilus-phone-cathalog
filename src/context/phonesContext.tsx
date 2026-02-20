@@ -8,6 +8,8 @@ export interface PhonesContextType {
   setPhones: React.Dispatch<React.SetStateAction<Phone[]>>;
   phonesCart: SelectedPhoneDetails[];
   setPhonesCart: React.Dispatch<React.SetStateAction<SelectedPhoneDetails[]>>;
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const PhonesContext = createContext<PhonesContextType>({
@@ -15,10 +17,13 @@ const PhonesContext = createContext<PhonesContextType>({
   setPhones: () => {},
   phonesCart: [],
   setPhonesCart: () => {},
+  isLoading: false,
+  setIsLoading: () => [],
 });
 
 export const PhonesProvider = ({ children }: { children: ReactNode }) => {
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getPhonesCartFromLocalStorage = (): SelectedPhoneDetails[] => {
     try {
@@ -43,8 +48,8 @@ export const PhonesProvider = ({ children }: { children: ReactNode }) => {
   }, [phonesCart]);
 
   const contextValue: PhonesContextType = useMemo(
-    () => ({ phones, setPhones, phonesCart, setPhonesCart }),
-    [phones, setPhones, phonesCart, setPhonesCart]
+    () => ({ phones, setPhones, phonesCart, setPhonesCart, isLoading, setIsLoading }),
+    [phones, setPhones, phonesCart, setPhonesCart, isLoading, setIsLoading]
   );
 
   return <PhonesContext.Provider value={contextValue}>{children}</PhonesContext.Provider>;
