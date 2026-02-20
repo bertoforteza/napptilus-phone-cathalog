@@ -7,6 +7,14 @@ const SimilarProductsStyled = styled.section`
   margin-bottom: 6.5rem;
   width: 100%;
 
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    margin-bottom: 2rem;
+  }
+
   .similar-products {
     &__title {
       font-size: 1.25rem;
@@ -14,6 +22,23 @@ const SimilarProductsStyled = styled.section`
       font-weight: ${props => props.theme.typography.fontWeight.light};
       padding-left: calc((100vw - 75rem) / 2);
       padding-right: calc((100vw - 75rem) / 2);
+
+      @media (max-width: 75rem) {
+        padding-left: 6.25rem;
+        padding-right: 6.25rem;
+      }
+
+      @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        font-size: 1rem;
+      }
+
+      @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: 0.875rem;
+      }
     }
 
     &__list {
@@ -25,6 +50,10 @@ const SimilarProductsStyled = styled.section`
       scroll-snap-type: x mandatory;
       padding-bottom: 2.5rem;
 
+      @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+        padding-bottom: 1.5rem;
+      }
+
       &::-webkit-scrollbar {
         height: 1px;
       }
@@ -33,6 +62,16 @@ const SimilarProductsStyled = styled.section`
         background: ${props => props.theme.colors.disabled};
         margin-left: calc((100vw - 75rem) / 2);
         margin-right: calc((100vw - 75rem) / 2);
+
+        @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+          margin-left: 0;
+          margin-right: 0;
+        }
       }
 
       &::-webkit-scrollbar-thumb {
@@ -46,6 +85,18 @@ const SimilarProductsStyled = styled.section`
       width: calc((100vw - 75rem) / 2);
       scroll-snap-align: start;
       pointer-events: none;
+
+      @media (max-width: 75rem) {
+        width: 6.25rem;
+      }
+
+      @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+        width: 0;
+      }
+
+      @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+        width: 0;
+      }
     }
 
     &__item {

@@ -4,6 +4,7 @@ const SpecificationsStyled = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  padding: 0;
 
   .specifications {
     &__title {
@@ -24,6 +25,10 @@ const SpecificationsStyled = styled.section`
       align-items: start;
       padding: ${props => props.theme.spacing.m} 0;
       border-bottom: 1px solid ${props => props.theme.colors.border};
+
+      @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+        grid-template-columns: 9.375rem 1fr;
+      }
     }
 
     &__label {
@@ -36,6 +41,14 @@ const SpecificationsStyled = styled.section`
       font-size: ${props => props.theme.typography.fontSize.xs};
       font-weight: ${props => props.theme.typography.fontWeight.light};
     }
+  }
+
+  @media (max-width: 1250px) {
+    padding: 2.5rem;
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    padding: 0;
   }
 `;
 
