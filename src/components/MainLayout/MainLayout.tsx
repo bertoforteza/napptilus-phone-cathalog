@@ -1,7 +1,9 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import PhoneListPage from '../../pages/ProheListPage/PhoneListPage';
-import PhoneDetailsPage from '../../pages/PhoneDetailsPage/PhoneDetailsPage';
-import CartPage from '../../pages/CartPage/CartPage';
+
+const PhoneListPage = lazy(() => import('../../pages/ProheListPage/PhoneListPage'));
+const PhoneDetailsPage = lazy(() => import('../../pages/PhoneDetailsPage/PhoneDetailsPage'));
+const CartPage = lazy(() => import('../../pages/CartPage/CartPage'));
 
 const MainLayout = () => {
   return (
